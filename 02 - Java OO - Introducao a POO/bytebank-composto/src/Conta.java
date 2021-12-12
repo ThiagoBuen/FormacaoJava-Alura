@@ -3,9 +3,8 @@ public class Conta{
 	double saldo;
 	int agencia = 42; //valor padrão para todos os objetos
 	int numero;
-	String titular;
-	String cpf;
-	String profissao;
+	Cliente titular;
+	
 	
 	public void deposita(double valor) {
 		this.saldo += valor;
@@ -36,7 +35,7 @@ public class Conta{
 		System.out.println("Saldo: " + this.saldo);
 		System.out.println("Agência: " + this.agencia);
 		System.out.println("Numero: " + this.numero);
-		System.out.println("Titular: " + this.titular);
+		System.out.println("Titular: " + this.titular.nome);
 		
 		
 	}

@@ -22,6 +22,8 @@ public class TestaMetodo {
 			System.out.println("Saldo insuficiente");
 		}
 		
+		conta.titular = "Joneses";
+		
 		conta.extrato();
 	}
 }
