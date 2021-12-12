@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+C:\Users\thiag\OneDrive\Documentos\Alura\Formacao Java e POO\.metadata\.plugins\org.eclipse.jdt.core
+2254486913.index

@@ -1,0 +1,9 @@
+
+public class testaConversao {
+	public static void main(String[] args) {
+		double salario = 1280.50;				//double, int - primitivo
+		int valor = (int)salario;				//casting
+		System.out.println(valor);
+		
+	}
+}

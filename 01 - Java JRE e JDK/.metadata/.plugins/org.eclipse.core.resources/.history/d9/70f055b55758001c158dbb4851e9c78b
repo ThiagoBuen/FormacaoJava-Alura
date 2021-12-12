@@ -1,0 +1,14 @@
+
+public class TestaCaracteres {
+	public static void main(String[] args) {
+		char letra = 'a';				// único caracter
+		System.out.println(letra);
+		
+		char valor =67;
+		System.out.println(valor);
+		
+		valor = valor + 1;
+		System.out.println(valor);
+		
+	}
+}
