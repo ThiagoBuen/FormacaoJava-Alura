@@ -1,0 +1,20 @@
+public class Conta{
+	//Atributos
+	double saldo;
+	int agencia = 42; //valor padrão para todos os objetos
+	int numero;
+	String titular;
+	
+	void deposita(double valor) {
+		saldo += valor;
+	}
+	
+	void saque(double valor) {
+		if(saldo >= valor) {
+			saldo -= valor;
+		}else {
+			System.out.println("Saldo insuficiente!");
+		}
+	}
+	
+}

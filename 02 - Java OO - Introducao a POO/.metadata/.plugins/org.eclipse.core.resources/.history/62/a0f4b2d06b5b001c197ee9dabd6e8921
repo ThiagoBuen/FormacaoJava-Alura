@@ -1,0 +1,14 @@
+
+public class TesteReferencia {
+	public static void main(String[] args) {
+		Conta primeiraConta = new Conta();		//Cria uma referência do objeto tipo Conta
+		primeiraConta.saldo = 300;
+		
+		System.out.println("Saldo da primeira conta: " + primeiraConta.saldo);
+		
+		Conta segundaConta = primeiraConta;		//Cria uma referência para o mesmo endereço de memória da referência primeiraConta
+		
+		
+		
+	}
+}

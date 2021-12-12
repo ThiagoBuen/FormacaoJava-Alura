@@ -1,0 +1,12 @@
+public class Conta{
+	//Atributos
+	double saldo;
+	int agencia = 42; //valor padrão para todos os objetos
+	int numero;
+	String titular;
+	
+	void deposita(double valor) {
+		saldo += valor;
+	}
+	
+}

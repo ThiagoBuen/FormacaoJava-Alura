@@ -1,0 +1,6 @@
+public class CriaConta {
+	public static void main(String[] args) {
+		Conta primeiraConta = new Conta();		//Cria (instancia) um objeto do tipo Conta
+		
+	}
+}
