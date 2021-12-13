@@ -1,7 +1,0 @@
-public class Conta{
-	//Atributos
-	double saldo;
-	int agencia = 42; //valor padrão para todas os objetos
-	int numero;
-	String titular;
-}
