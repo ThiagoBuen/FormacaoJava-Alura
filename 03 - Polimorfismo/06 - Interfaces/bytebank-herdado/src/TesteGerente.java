@@ -7,7 +7,7 @@ public class TesteGerente {
 		g1.setSalario(3300);
 		g1.setSenha(303);
 		
-		Funcionario f1 = new Funcionario();
+		Funcionario f1 = new Gerente();
 		
 		f1.setNome("Joao das neves");
 		f1.setSalario(300);
