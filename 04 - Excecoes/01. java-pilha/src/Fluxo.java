@@ -2,7 +2,11 @@
 public class Fluxo {
 	public static void main(String[] args) {
 		System.out.println("Ini do main");
-		metodo1();
+		try {
+			metodo1();			
+		}catch(MinhaExcecao ex) {
+			System.out.println("Tratando...");
+		}
 		System.out.println("Fim do main");
 	}
 	
@@ -23,7 +27,7 @@ public class Fluxo {
 				Conta c = null;
 				c.deposita();
 			}
-			catch(ArithmeticException | NullPointerException | MinhaExcecao ex){
+			catch(ArithmeticException | NullPointerException ex){
 				String msg = ex.getMessage();
 				ex.printStackTrace();
 				System.out.println("Exception: " + msg);
