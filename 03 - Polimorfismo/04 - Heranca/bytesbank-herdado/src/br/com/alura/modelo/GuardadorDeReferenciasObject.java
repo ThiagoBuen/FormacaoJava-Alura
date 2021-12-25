@@ -5,9 +5,9 @@ public class GuardadorDeReferenciasObject {
 	private Object[] referencias;
 	private int posicaoLivre;
 	
-	public void GuardadorDeContas() {
+	public GuardadorDeReferenciasObject() {
 		this.referencias = new Object[10];
-		posicaoLivre = 0;
+		this.posicaoLivre = 0;
 	}
 	
 	public void adiciona(Object ref) {
