@@ -6,7 +6,7 @@ import br.com.alura.modelo.Cliente;
 import br.com.alura.modelo.Conta;
 import br.com.alura.modelo.ContaCorrente;
 
-public class TesteUtil {
+public class TesteUtilArrayList {
 	public static void main(String[] args) {
 		
 		//<...> - generics
