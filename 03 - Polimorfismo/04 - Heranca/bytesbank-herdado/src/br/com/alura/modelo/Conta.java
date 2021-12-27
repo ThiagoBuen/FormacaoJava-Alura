@@ -1,7 +1,7 @@
 package br.com.alura.modelo;
 
 
-public abstract class Conta {
+public abstract class Conta extends Object implements Comparable<Conta> {
 
     private double saldo;
     private int agencia;
@@ -90,6 +90,12 @@ public abstract class Conta {
     	}
     	
     	return true;
+    }
+    
+    @Override
+    public int compareTo(Conta outraConta) {
+    	
+    	return Double.compare(this.saldo, outraConta.saldo);
     }
     
 	@Override
