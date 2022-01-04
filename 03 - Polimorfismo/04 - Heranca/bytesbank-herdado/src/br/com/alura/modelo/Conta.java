@@ -1,7 +1,8 @@
 package br.com.alura.modelo;
 
+import java.io.Serializable;
 
-public abstract class Conta extends Object implements Comparable<Conta> {
+public abstract class Conta extends Object implements Comparable<Conta>, Serializable {
 
     private double saldo;
     private int agencia;

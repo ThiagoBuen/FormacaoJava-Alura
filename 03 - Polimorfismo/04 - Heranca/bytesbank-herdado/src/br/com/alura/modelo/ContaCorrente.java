@@ -1,6 +1,8 @@
 package br.com.alura.modelo;
 
-public class ContaCorrente extends Conta implements Tributavel{
+import java.io.Serializable;
+
+public class ContaCorrente extends Conta implements Tributavel, Serializable{
 	public ContaCorrente(int agencia, int numero) {
 		// TODO Auto-generated constructor stub
 		//super(); implícito
