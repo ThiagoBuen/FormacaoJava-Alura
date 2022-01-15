@@ -14,10 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.models.Banco;
 import br.com.alura.gerenciador.models.Empresa;
 
-/**
- * Servlet implementation class ListaEmpresaServlet
- */
-@WebServlet("/listaEmpresas")
+
+//@WebServlet("/listaEmpresas")
 public class ListaEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,7 +29,6 @@ public class ListaEmpresaServlet extends HttpServlet {
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/listaEmpresas.jsp");
 		rd.forward(request, response);
-		
 		
 //		PrintWriter out = response.getWriter();
 //		

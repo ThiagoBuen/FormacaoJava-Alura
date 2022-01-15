@@ -1,25 +1,22 @@
-package br.com.alura.gerenciador.servlet;
+package br.com.alura.gerenciador.acao;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.alura.gerenciador.models.Banco;
 import br.com.alura.gerenciador.models.Empresa;
 
-
-//@WebServlet("/mostraEmpresa")
-public class MostraEmpresaServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+public class MostraEmpresa implements Acao{
+	
+	public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("Mostrando dados da empresa");
+		
 		String paramId = request.getParameter("id");
 		Integer id = Integer.valueOf(paramId);
 		
@@ -27,11 +24,9 @@ public class MostraEmpresaServlet extends HttpServlet {
 		
 		Empresa empresa = banco.buscaEmpresaPeloId(id);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/formEditaEmpresa.jsp");
-		
 		request.setAttribute("empresa", empresa);
-		rd.forward(request, response);
 		
-	}
+		return "forward:formEditaEmpresa.jsp";
 
+	}
 }

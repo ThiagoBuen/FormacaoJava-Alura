@@ -16,16 +16,11 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.alura.gerenciador.models.Banco;
 import br.com.alura.gerenciador.models.Empresa;
 
-/**
- * Servlet implementation class NovaEmpresaServlet
- */
-@WebServlet("/novaEmpresa")
+
+//@WebServlet("/novaEmpresa")
 public class NovaEmpresaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#service(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Cadastrando nova empresa");
 		
