@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.com.alura.gerenciador.acao.Acao;
 import br.com.alura.gerenciador.acao.AlteraEmpresa;
@@ -28,28 +29,7 @@ public class UnicaEntradaServlet extends HttpServlet {
 		
 		String paramAcao =  request.getParameter("acao");
 		
-		String nomeDaClasse = "br.com.alura.gerenciador.acao." + paramAcao;
 		
-		System.out.println(nomeDaClasse);
-		
-		String nome;
-		
-		try {
-			Class classe = Class.forName(nomeDaClasse);					// carrega a classe com o nome da string
-			Acao acao = (Acao) classe.newInstance();			
-			nome = acao.executa(request, response);
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
-			throw new ServletException(e);
-		} 
-		
-		
-		String[] tipoEEndereco = nome.split(":");
-		if(tipoEEndereco[0].equals("forward")) {
-			RequestDispatcher rd = request.getRequestDispatcher("WEB-INF/view/" + tipoEEndereco[1]);
-			rd.forward(request, response);			
-		}else {
-			response.sendRedirect(tipoEEndereco[1]);
-		}
 		
 //		String nome = null; 
 //		
