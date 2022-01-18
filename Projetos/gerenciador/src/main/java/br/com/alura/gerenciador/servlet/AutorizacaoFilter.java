@@ -17,6 +17,11 @@ import javax.servlet.http.HttpSession;
 
 public class AutorizacaoFilter implements Filter {
        
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException { 	}
+	
+	@Override
+	public void destroy() {	}
 
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain chain) throws IOException, ServletException {
 
