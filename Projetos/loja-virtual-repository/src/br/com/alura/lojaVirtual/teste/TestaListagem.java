@@ -2,6 +2,7 @@ package br.com.alura.lojaVirtual.teste;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,10 +14,10 @@ public class TestaListagem {
 		ConnectionFactory connectionFactory = new ConnectionFactory();
 		Connection connection = connectionFactory.recuperarConexao();
 		
-		Statement stm = connection.createStatement();
+		PreparedStatement stm = connection.prepareStatement("SELECT ID, NOME, DESCRICAO FROM PRODUTO");
 		
 		
-		stm.execute("SELECT ID, NOME, DESCRICAO FROM PRODUTO");
+		stm.execute();
 		
 		ResultSet rst = stm.getResultSet();
 		
