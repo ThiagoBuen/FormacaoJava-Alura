@@ -21,9 +21,16 @@ public class LeiloesPage {
 		driver.get(PAGE_URL);
 	}
 
-	public boolean existe(String nomeProduto, String valor, String usuario) {
-		return driver.getCurrentUrl().endsWith("/leiloes") && driver.getPageSource().contains(nomeProduto) && 
-				driver.getPageSource().contains(valor);
+	public boolean existe(String nome, String valor, String data, String usuario) {
+		return driver.getPageSource().contains(nome) && 
+					  driver.getPageSource().contains(valor) &&
+					  driver.getPageSource().contains(data) &&
+					  driver.getPageSource().contains(usuario);
+	}
+	
+	public boolean estaNaPaginaDeLeiloes() {
+		//this.esperaCarregar();			//	--> Para browsers
+		return this.driver.getCurrentUrl().endsWith("/leiloes");
 	}
 
 	public NovoLeilaoPage visitaPaginaParaCriarUmNovoLeilao() {
@@ -67,7 +74,7 @@ public class LeiloesPage {
 	}
 
 	public void esperaCarregar() {
-		WebDriverWait wait = new WebDriverWait(driver,5);
+		WebDriverWait wait = new WebDriverWait(driver,2);
 		wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h1[contains(text(),'Todos leilões')]")));
 	}
 
