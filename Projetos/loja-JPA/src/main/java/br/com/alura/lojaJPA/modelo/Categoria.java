@@ -1,5 +1,6 @@
 package br.com.alura.lojaJPA.modelo;
 
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,25 +11,23 @@ import javax.persistence.Table;
 @Table(name = "categorias")
 public class Categoria {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String nome;
+	@EmbeddedId
+	private CategoriaId id;
 	
 	public Categoria() {
 		
 	}
 	
 	public Categoria(String nome) {
-		this.nome = nome;
+		this.id = new CategoriaId(nome, "xpto");
 	}
 
 	public String getNome() {
-		return nome;
+		return this.id.getNome();
 	}
 
 	public void setNome(String nome) {
-		this.nome = nome;
+		this.id.setNome(nome);
 	}
 	
 	
