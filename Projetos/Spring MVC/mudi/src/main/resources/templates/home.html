@@ -1,25 +1,37 @@
 <html>
 	<head>
 		<meta charset="UTF-8"/>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 	</head>
 	
 	<body>
-		<div th:each="pedido: ${pedidos}">
-			<div th:text="${pedido.nome}">Nome do produto</div>
-			<div>Valor: <span th:text="${pedido.valorNegociado}">200,99</span></div>
-			<div>Data da entrega: <span th:text="${pedido.dataDaEntrega}">10/02/2020</span></div>
-
-			<div>Produto</div>
-			<div th:text="${pedido.urlProduto}">Url do produto</div>
-			
-			<div>Descrição</div>
-			<div>
-				<textarea th:text="${pedido.descricao}">Descrição do pedido</textarea>
-			</div>
-			
-			<div>
-				<img th:text="${pedido.urlImagem}"src=""/>
+		<div class="container">
+			<div class="card" th:each="pedido: ${pedidos}">
+				<div class="card-header" th:text="${pedido.nome}">Nome do produto</div>
 				
+				<div class="card-body">
+					<div class="row">
+						<div class="col-12 col-sm-7 mb-3">
+							<div class="row">
+								<div class="col-md-5">Valor: <span th:text="${pedido.valorNegociado}">200,99</span></div>
+								<div class="col-md-7">Data da entrega: <span th:text="${pedido.dataDaEntrega}">10/02/2020</span></div>					
+							</div>
+							
+							<div>Produto</div>
+							<div class="form-control" th:text="${pedido.urlProduto}">Url do produto</div>
+							
+							<div>Descrição</div>
+							<div>
+								<textarea class="form-control" th:text="${pedido.descricao}">Descrição do pedido</textarea>
+							</div>
+						</div>
+						<div class="col-12 col-sm-4">
+							<div>
+								<img class="img-tumbnail" th:text="${pedido.urlImagem}"src=""/>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>
