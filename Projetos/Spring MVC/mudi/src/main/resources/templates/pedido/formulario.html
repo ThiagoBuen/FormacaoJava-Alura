@@ -9,29 +9,42 @@
 			<div class="jumbotron jumbotron-fluid mb-0">
 				<h1 class="display-4">Novo Pedido</h1>
 			</div>
-			
-			<form action="/pedido/novo" method="POST">
-				<div>
-					<label for="nomeProduto">Produto</label>
-					<input name="nomeProduto" placeholder="nome do produto"/>
-					<small>Informe qual o nome do produto.</small>
-				</div>
-				<div>
-					<label for="urlProduto">Url</label>
-					<input name="urlProduto" placeholder="url do produto"/>
-					<small>Procure em um site o produto que você deseja e cole a url da página.</small>
-				</div>
-				<div>
-					<label for="urlImagem">Imagem</label>
-					<input name="urlImagem" placeholder="url da imagem"/>
-					<small>Copie a url de uma boa imagem do produto e cole a url da imagem aqui para conseguir compradores!</small>
-				</div>
-				<div>
-					<label for="descricao">Descricao</label>
-					<textarea name="descricao" placeholder="Adicione detalhes importes aqui"></textarea>
-				</div>
-				<button type="submit">Cadastrar</button>
-			</form>
+			<div class="mt-3">
+				<form th:object="${requisicaoNovoPedido}" class="card-body" action="/pedido/novo" method="POST">
+					<div class="form-group">
+						<label for="nomeProduto">Produto</label>
+						<input th:field="*{nomeProduto}" name id value class="form-control" th:errorclass="is-invalid" placeholder="nome do produto"/>
+						<small>Informe qual o nome do produto.</small>
+						<div class="invalid-feedback" th:errors="*{nomeProduto}">
+							Nome do produto não pode estar branco
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="urlProduto">Url</label>
+						<input th:field="urlProduto" name id value class="form-control" th:errorclass="is-invalid" placeholder="url do produto"/>
+						<small>Procure em um site o produto que você deseja e cole a url da página.</small>
+						<div class="invalid-feedback" th:errors="*{urlProduto}">
+							Url do produto não pode estar branco
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="urlImagem">Imagem</label>
+						<input th:field="urlImagem" name id value class="form-control" th:errorclass="is-invalid" placeholder="url da imagem"/>
+						<small>Copie a url de uma boa imagem do produto e cole a url da imagem aqui para conseguir compradores!</small>
+						<div class="invalid-feedback" th:errors="*{urlImagem}">
+							Insira a url da imagem
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="descricao">Descricao</label>
+						<textarea class="form-control" th:errorclass="is-invalid" th:field="descricao" name id value placeholder="Adicione detalhes importes aqui"></textarea>
+						<div class="invalid-feedback" th:errors="*{descricao}">
+							Insira a descricao do produto
+						</div>
+					</div>
+					<button class="btn btn-primary" type="submit">Cadastrar</button>
+				</form>
+			</div>
 		</div>
 		
 	</body>
