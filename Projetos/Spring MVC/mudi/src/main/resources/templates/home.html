@@ -11,23 +11,28 @@
 		
 			<nav class="navbar navbar-expand navbar-light bg-light d-flex justify-content-between mb-3">
 			    <div class="navbar-nav">
-			        <a class="nav-link" href="#">Todos <span class="sr-only">(current)</span></a>
-			        <a class="nav-link" href="#">Aguardando</a>
-			        <a class="nav-link" href="#">Aprovado</a>
-			        <a class="nav-link disabled" href="#">Entregue</a>
+			        <a th:classappend="${status}== null ? 'active'"class="nav-link nav-item" href="/home">Todos <span class="sr-only">(current)</span></a>
+			        <a th:classappend="${status}== 'aguardando' ? 'active'" class="nav-link nav-item" href="/home/aguardando">Aguardando</a>
+			        <a th:classappend="${status}== 'aprovado' ? 'active'" class="nav-link nav-item" href="/home/aprovado">Aprovado</a>
+			        <a th:classappend="${status}== 'entregue' ? 'active'" class="nav-link nav-item" href="/home/entregue">Entregue</a>
 			    </div>
 			    <button href="/pedido/formulario" class="btn btn-outline-secondary my-2 my-sm-0">Novo</button>
 			</nav>
 			
 			<div class="card mb-3" th:each="pedido: ${pedidos}">
-				<div class="card-header" th:text="${pedido.nome}">Nome do produto</div>
+			
+				<th:block th:switch="${pedido.status.name()}">
+								<div th:case="AGUARDANDO" class="card-header alert-warning" th:text="${pedido.nome}">Nome do produto</div>
+								<div th:case="APROVADO" class="card-header alert-success" th:text="${pedido.nome}">Nome do produto</div>
+								<div th:case="ENTREGUE" class="card-header alert-dark" th:text="${pedido.nome}">Nome do produto</div>
+				</th:block>
 				
 				<div class="card-body">
 					<div class="row">
 						<div class="col-12 col-sm-7 mb-3">
 							<div class="row">
-								<div class="col-md-5">Valor: <span th:text="${pedido.valorNegociado}">200,99</span></div>
-								<div class="col-md-7">Data da entrega: <span th:text="${pedido.dataDaEntrega}">10/02/2020</span></div>					
+								<div class="col-md-5">Valor: <span th:if="${pedido.valorNegociado} != null" th:text="${'R$ ' + #numbers.formatDecimal(pedido.valorNegociado,3,'POINT',2,'COMMA')}">200,99</span></div>
+								<div class="col-md-7">Data da entrega: <span th:if="${pedido.dataDaEntrega} != null" th:text="${#temporals.format(pedido.dataDaEntrega, 'dd/MM/yyyy')}">10/02/2020</span></div>					
 							</div>
 							
 							<div>Produto</div>
