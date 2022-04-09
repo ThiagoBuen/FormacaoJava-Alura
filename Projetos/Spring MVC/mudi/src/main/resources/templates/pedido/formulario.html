@@ -10,7 +10,7 @@
 		<div class="container">
 			<div th:replace="~{base :: titulo('Novo Pedido')}"> </div>
 			<div class="mt-3">
-				<form th:object="${requisicaoNovoPedido}" class="card-body" action="/pedido/novo" method="POST">
+				<form th:action="@{/pedido/novo}" th:object="${requisicaoNovoPedido}" class="card-body" method="POST">
 					<div class="form-group">
 						<label for="nomeProduto">Produto</label>
 						<input th:field="*{nomeProduto}" name id value class="form-control" th:errorclass="is-invalid" placeholder="nome do produto"/>
