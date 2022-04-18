@@ -3,41 +3,73 @@
 		
 	</head>
 	
-	<body>
+	<body onLoad="onLoad()">
 		<div th:replace="~{base :: logo}"> </div>
 		
 		<div class="container">
-			<div th:replace="~{base :: titulo('�ltimos Pedidos')}"> </div>
+			<div th:replace="~{base :: titulo('Últimos Pedidos')}"> </div>
 				
-			<div class="card mb-3" th:each="pedido: ${pedidos}">
+			<div class="card mb-3" v-for="pedido in pedidos">
 			
-				<div class="card-header alert-dark" th:text="${pedido.nome}">Nome do produto</div>
+				<div class="card-header alert-dark">{{pedido.nomeProduto}}</div>
 
 				
 				<div class="card-body">
 					<div class="row">
 						<div class="col-12 col-sm-7 mb-3">
 							<div class="row">
-								<div class="col-md-5">Valor: <span th:if="${pedido.valorNegociado} != null" th:text="${'R$ ' + #numbers.formatDecimal(pedido.valorNegociado,3,'POINT',2,'COMMA')}">200,99</span></div>
-								<div class="col-md-7">Data da entrega: <span th:if="${pedido.dataDaEntrega} != null" th:text="${#temporals.format(pedido.dataDaEntrega, 'dd/MM/yyyy')}">10/02/2020</span></div>					
+								<div class="col-md-5">Valor: <input /></div>
+								<div class="col-md-7">Data da entrega: <input /></div>					
 							</div>
 							
 							<div>Produto</div>
-							<div class="form-control" th:text="${pedido.urlProduto}">Url do produto</div>
+							<div> <a v-bind:href="pedido.urlProduto">{{pedido.nomeProduto}}<a/></div>
 							
 							<div>Descrição</div>
 							<div>
-								<textarea class="form-control" th:text="${pedido.descricao}">Descrição do pedido</textarea>
+								<textarea class="form-control" th:text="${pedido.descricao}">{{pedido.descricao}}</textarea>
 							</div>
 						</div>
 						<div class="col-12 col-sm-4">
 							<div>
-								<img class="img-tumbnail" th:text="${pedido.urlImagem}"src=""/>
+								<img class="img-tumbnail" v-bind:src="pedido.urlImagem"/>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<script>
+			function onLoad(){
+				var app = new Vue({
+					el: '#ofertas',
+					data: {
+						pedidos: [
+						    {
+						        "id" : 4,
+						        "nomeProduto" : "Wireless Earbuds TaoTronics",
+						        "valorNegociado" : null,
+						        "dataDaEntrega" : null,
+						        "urlProduto" : "https://www.amazon.com/TaoTronics-SoundLiberty-79-Technology-Waterproof/dp/B08397W1F7/ref=gbps_img_m-9_475e_ff9c5f1b?smid=AAJVIARPZY8SB&pf_rd_p=5d86def2-ec10-4364-9008-8fbccf30475e&pf_rd_s=merchandised-search-9&pf_rd_t=101&pf_rd_i=15529609011&pf_rd_m=ATVPDKIKX0DER&pf_rd_r=WD9HGMRTX91GNP8DKA4Z",
+						        "urlImagem" : "https://images-na.ssl-images-amazon.com/images/I/51SgO0fSIuL._AC_SL1300_.jpg",
+						        "descricao" : "descrição Wireless Earbuds TaoTronics",
+						        "status" : "AGUARDANDO"
+						    },
+						    {
+						        "id" : 3,
+						        "nomeProduto" : "ASICS Men's GEL Venture 5 Running",
+						        "valorNegociado" : null,
+						        "dataDaEntrega" : null,
+						        "urlProduto" : "https://www.amazon.com/ASICS-Gel-Venture-5-M-Silver-Light/dp/B00NUZD2PW?ref_=Oct_DLandingS_D_6340036f_60&smid=A2NEM58BFPMEIL",
+						        "urlImagem" : "https://images-na.ssl-images-amazon.com/images/I/718OQVH7AnL._AC_UX625_.jpg",
+						        "descricao" : "descrição para ASICS ",
+						        "status" : "AGUARDANDO"
+						    } 
+						]
+					}
+				});
+			}
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 	</body>
 </html>
